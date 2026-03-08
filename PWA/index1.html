@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIADEMA - Choral</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <h1>DIADEMA</h1>
+    <p>Choral manokana</p>
+  </div>
+</header>
+
+<main>
+  <!-- Hero / Accueil -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <img src="solfege.png" alt="Solfege Icon" class="solfege-img">
+    <div class="hero-content">
+      <h1>DIADEMA</h1>
+      <p>Choral manokana – Mankalaza ny mozika sy ny fiaraha-mientana</p>
+      <div class="buttons">
+        <button onclick="showTitlePage()"><img src="music-alt.png" alt="Tononkira" class="btn-icon"> TONONKIRA</button>
+        <button onclick="showPage('photos')"><img src="picture.png" alt="Sary" class="btn-icon"> SARY</button>
+        <button onclick="showPage('notes')"><img src="notes.png" alt="Bloc Note" class="btn-icon"> BLOC NOTE</button>
+        <button onclick="showPage('information')"><img src="info.png" alt="Information" class="btn-icon"> INFORMATION</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page titres Hira -->
+  <section id="titles" class="page">
+    <h2>Tononkira – Fidio ny titre</h2>
+    <input type="text" id="searchTitle" placeholder="Mitady titre..." onkeyup="filterTitles()">
+    <div class="song-buttons" id="titleButtons">
+      <button onclick="showSongPage('AVERIKO')">AVERIKO</button>
+      <button onclick="showSongPage('IZY')">IZY</button>
+      <button onclick="showSongPage('VELOMA')">VELOMA</button>
+    </div>
+    <button class="back-btn" onclick="backToHome()">Hiverina Accueil</button>
+  </section>
+
+  <!-- Page hira tsirairay -->
+  <section id="songContent" class="page">
+    <h2 id="songTitle"></h2>
+    <p id="songLyrics"></p>
+    <button class="back-btn" onclick="backToTitles()">Hiverina Titre</button>
+  </section>
+
+  <!-- Gallery Sary -->
+  <section id="photos" class="page">
+    <h2>Sary</h2>
+    <div class="photo-selector">
+      <label><input type="checkbox" value="photos/photo1.jpg" onchange="updateGallery()"> Photo 1</label>
+      <label><input type="checkbox" value="photos/photo2.jpg" onchange="updateGallery()"> Photo 2</label>
+      <label><input type="checkbox" value="photos/photo3.jpg" onchange="updateGallery()"> Photo 3</label>
+    </div>
+    <div class="photo-gallery" id="selectedPhotos"></div>
+    <button class="back-btn" onclick="backToHome()">Hiverina Accueil</button>
+  </section>
+
+  <!-- Bloc Note PRO -->
+  <section id="notes" class="page">
+    <h2>Bloc Note PRO</h2>
+    <div id="noteForm">
+      <input type="text" id="noteTitle" placeholder="Titre note">
+      <textarea id="noteText" placeholder="Soraty eto ny notes-nao..."></textarea>
+      <button onclick="saveNote()">💾 Enregistrer</button>
+      <button onclick="startRecording()">🎤 Enregistrement vocal</button>
+      <button onclick="takePhoto()">📷 Maka sary</button>
+    </div>
+    <input type="text" id="searchNote" placeholder="Mitady note..." onkeyup="filterNotes()">
+    <div id="notesList"></div>
+    <button class="back-btn" onclick="backToHome()">Hiverina Accueil</button>
+  </section>
+
+  <!-- Page Information -->
+  <section id="information" class="page">
+    <h2>Information</h2>
+    <p>Ato no azonao ampidirana ny vaovao rehetra momba ny choral DIADEMA.</p>
+    <p>Contact: <a href="mailto:contact@example.com">contact@example.com</a></p>
+    <button class="back-btn" onclick="backToHome()">Hiverina Accueil</button>
+  </section>
+
+</main>
+
+<footer>
+<p>&copy; 2026 DIADEMA - Choral</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').then(()=>console.log('Service Worker registered')).catch(err=>console.log(err));}
+</script>
+</body>
+</html>
